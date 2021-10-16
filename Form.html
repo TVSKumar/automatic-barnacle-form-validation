@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="" content="">
+    <title>Form</title>
+  </head>
+  <body>
+    <h1 class="">Fill your details</h1>
+    <form action="#" onsubmit="return validation()" method="post" accept-charset="utf-8">
+    
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" placeholder="Full name"/>
+    <br />
+    <span id="username"></span>
+    <br />
+    <label for="number">Number:</label>
+    <input type="text" name="number" id="number" placeholder="Mobile number"/>
+    <br />
+    <span id="num"></span>
+    <br />
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" placeholder="Email ID"/>
+    <br />
+    <span id="mail"></span>
+    <br />
+    <input type="submit" name="btn" id="btn" value="submit" /> 
+    </form>
+
+    <script type="text/javascript" charset="utf-8">
+      function validation() {
+        var user = document.getElementById('name').value;
+        var num = document.getElementById('number').value;
+        var mail = document.getElementById('email').value;
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        
+        if(user == ""){
+          document.getElementById('username').innerHTML = "Name should not be empty."
+          return false
+          }
+        if(!isNaN(user)){
+            document.getElementById('username').innerHTML = "Number not allowed in Name";
+          return false;
+        }
+        if(num == ""){
+          document.getElementById('num').innerHTML = "Mobile number should not be empty"
+          return false;
+        }
+        if(isNaN(num)){
+				document.getElementById('num').innerHTML = "Characters not allowed in Mobile number";
+				return false;
+        }
+        if(num.length!=10){
+          document.getElementById('num').innerHTML = "Mobile Number must be 10 digits only";
+          return false;
+        } 
+        if(mail == ""){
+          document.getElementById('mail').innerHTML = "Email ID should not be empty";
+          return false;
+        }
+        if(mail.match(pattern)){
+          document.getElementById('mail').innerHTML = "Email is invalid";
+          return false;
+        }
+        if(mail.indexOf('@') <= 0 ){
+				document.getElementById('mail').innerHTML =";
+				return false;
+			}
+
+			if((mail.charAt(mail.length-4)!='.') && (mail.charAt(mail.length-3)!='.')){
+				document.getElementById('mail').innerHTML =" domain error ";
+				return false;
+			}
+    }      
+   </script>
+  </body>
+</html>
